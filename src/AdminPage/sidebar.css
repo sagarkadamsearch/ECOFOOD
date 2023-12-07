@@ -1,0 +1,57 @@
+/* *{
+    margin:0;
+    padding:0;
+    text-decoration: none;
+} */
+.AdminContainer{
+    display:flex;
+}
+main{
+    width: 100%;
+    padding: 20px;
+}
+.AdminSidebar{
+    background: #DC3545;
+    /* background:#1A73E8; */
+    color: #fff;
+    height: 100vh;
+    width: 200px;
+    transition: all 0.5s;
+}
+.top_section{
+    display: flex;
+    align-items:center;
+    padding:20px 15px;
+}
+.logo{
+    font-size: 25px;
+}
+.bars{
+    display: flex;
+    font-size: 25px;
+    margin-left: 50px;
+}
+.link{
+    display: flex;
+    color: #fff;
+    padding: 10px 15px;
+    gap: 15px;
+    transition: all 0.5s;
+    
+}
+.link:hover{
+    background: white;
+    color: #DC3545;
+    transition: all 0.5s;
+}
+.active{
+    background: white;
+    color: #DC3545;
+}
+.icon, .link_text{
+    font-size: 20px;
+}
+
+/* button{
+    background-color: #DC3545;
+} */

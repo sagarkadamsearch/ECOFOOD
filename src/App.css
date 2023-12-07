@@ -1,0 +1,130 @@
+body{
+    overflow-x: hidden;
+}
+.AdminContainer a{
+    text-decoration: none;
+}
+
+.themeColor{
+    color: #DC3545;
+}
+
+.themeBg{
+    background-color: #DC3545;
+}
+
+.pageBtn{
+    border: 1px solid gray;
+    padding: 0px 10px !important;
+    padding-top: 0 !important;
+}
+/* .button{
+    background-color: #DC3545;
+    color: #f4f4f4;
+    font-weight: bold;
+} */
+
+
+
+
+.navContainer{
+    display: flex;
+    justify-content: space-evenly !important;
+  }
+
+  .nav-link:hover {
+    border-bottom: 2px solid #b4a598;
+    color: #6c6761 !important;
+  }
+  
+  .nav-link.active {
+    color: #DC3545 !important;
+    border-bottom: 2px solid #DC3545;
+    background-color: transparent;
+  }
+
+.hero_h1{
+    font-size: 55px;
+    /* line-height: 60px; */
+}
+.max-width{
+    max-width: 500px;
+
+}
+
+.hero_text{
+padding: 100px 50px;
+}
+
+.productListMain{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    place-items: center;
+}
+
+.heroBgCard{
+    background-image: url(./Image/heroBg.png);
+}
+
+/* .smallCard{
+    width: 200px;
+    height: 250px;
+    background: transparent;
+} */
+@media screen and (max-width:1100px) {
+
+    .testi{
+        display: none;
+    }
+
+    .productListMain{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        place-items: center;
+    }
+    /* .mainSidebarProduct{
+        display: none;
+    } */
+    /* filter{
+        display: none;
+    } */
+}
+
+@media screen and (max-width:768px) {
+ 
+
+        .productListMain{
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            place-items: center;
+        }
+
+        /* .mainSidebarProduct{
+            display: none;
+        } */
+}
+@media screen and (max-width:500px) {
+    .hero_h1{
+        font-size: 30px;
+    }
+    .hero_text{
+        padding: 0px;
+        }
+        .testi{
+            display: none;
+        }
+
+        filter{
+            display: none;
+        }
+
+        .productListMain{
+            display: grid;
+            grid-template-columns: repeat(1,1fr);
+            place-items: center;
+        }
+
+        /* .mainSidebarProduct{
+            display: none;
+        } */
+}
