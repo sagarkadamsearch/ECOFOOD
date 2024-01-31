@@ -3,7 +3,6 @@
 
 Welcome to the EcoFood Fresh Food Website! This README file will guide you through the various features and functionalities of our website, helping you understand its structure and how to navigate through it.
 
-
 ## Table of Contents
 
 1. [Introduction](#introduction)
