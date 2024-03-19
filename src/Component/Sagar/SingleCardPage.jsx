@@ -31,7 +31,7 @@ const SingleCardPage = () => {
             <Header/>
             <BenefitVideo/>
             <SimilarProduct category={category} data={data}/>
-            <OtherProduct category={category} data={data}/>
+            {/* <OtherProduct category={category} data={data}/> */}
         </div>
     );
 };

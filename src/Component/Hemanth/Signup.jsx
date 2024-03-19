@@ -85,7 +85,7 @@ export const SignUp=()=>{
             <label htmlFor="">Email</label>
             <input type="text" value={email} className="px-2 fs-5" placeholder="Email"  onChange={(e)=>{setEmail(e.target.value)}}/>
             <label htmlFor="">Password</label>
-            <input type="text" value={password} className="px-2 fs-5" placeholder="Password"  onChange={(e)=>{setPassword(+e.target.value)}}/>
+            <input type="text" value={password} className="px-2 fs-5" placeholder="Password"  onChange={(e)=>{setPassword(e.target.value)}}/>
             <span className="d-flex justify-content-between mt-2">
 
             <ButtonComponent onClick={handleSubmit} name={"submit"} />
