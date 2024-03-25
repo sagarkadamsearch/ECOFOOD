@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import Loader from '../Component/Loader'
 
+
 export default function Products() {
 
   const loading = useSelector(store=>store.ProductsReducer.isLoading);
