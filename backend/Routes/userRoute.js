@@ -3,7 +3,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const e = require('express');
-const authMiddleware = require('../Middlewares/Auth.middleware');
+const {authMiddleware} = require('../Middlewares/auth.middleware.js');
 const { productModel } = require('../models/product.model');
 const UserRoute = express.Router();
 
