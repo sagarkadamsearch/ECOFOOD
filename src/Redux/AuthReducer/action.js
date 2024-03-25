@@ -31,18 +31,8 @@ export const signUp = (userData) => (dispatch) => {
 
 
 
-  export const login=(emData)=>(dispatch)=>{
-    // console.log("login action")
-   // dispatch({type:LoginUpdate,payload:emData})
-   axios
-      .post("https://grocryapi.onrender.com/LoggedIn", emData)
-      .then((res) => {
-        // console.log("login UPDate",res.data)
-        dispatch({ type:LoginUpdate , payload: res.data});
-      })
-      .catch((err) => {
-        dispatch({ type:SignUpFail , payload: err.message });
-      });
+  export const login=()=>{
+        return { type:LoginUpdate};
   };
 
 
@@ -74,9 +64,8 @@ export const signUp = (userData) => (dispatch) => {
   
   
   export const logout=(dispatch)=>{
-    console.log("logout action")
-    dispatch({type:LogoutUpdate})
-  
+    dispatch({type:LogoutUpdate});
+    sessionStorage.removeItem('token');
   }
 
   export const upDateOrder=(data)=>(dispatch)=>{

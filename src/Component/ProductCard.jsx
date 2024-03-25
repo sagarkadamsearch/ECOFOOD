@@ -4,16 +4,16 @@ import styled from '@emotion/styled'
 import {FaCartPlus, FaStar} from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 
-export default function ProductCard({image,title,price,category,rating,id}) {
+export default function ProductCard({image,title,price,category,rating,_id}) {
 
   const navigate = useNavigate()
 
-  const handleSinglePage = (id)=>{
-    navigate(`/singlePage/${id}`)
+  const handleSinglePage = (_id)=>{
+    navigate(`/singlePage/${_id}`)
   }
   
   return (
-   <DIV onClick={()=>handleSinglePage(id)}>
+   <DIV onClick={()=>handleSinglePage(_id)}>
     <div className='shadow rounded p-2 d-flex justify-content-between'>
         <div className='float-start'> 
 

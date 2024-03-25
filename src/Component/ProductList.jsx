@@ -21,12 +21,10 @@ export default function ProductList() {
 
   const length = useSelector(store=>store.ProductsReducer.length);
 
-  
-
   const Total = Math.ceil(length/6)
   
   const paginationArray = new Array(Total).fill(0)
-  console.log(page)
+
 
   const handlePage = (index)=>{
     setPage(index+1)

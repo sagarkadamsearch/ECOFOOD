@@ -33,14 +33,13 @@ export const reducer = (state=initialState,{type,payload})=>{
             }
         }
        case LoginUpdate:{
-       console.log("hiii")
         return{
-            ...state,isAuth:true,loginUser:payload
+            ...state,isAuth:true
         }
        }
        case LogoutUpdate:{
         return{
-            ...state,isAuth:false,loginUser:{}
+            ...state,isAuth:false,
         }
        }
        case upDateOrder:{

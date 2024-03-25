@@ -17,34 +17,13 @@ export const CartPage = () => {
   const [loading,setLoading] = useState(false)
   const dispatch=useDispatch();
   const navigate = useNavigate()
-  // const logId = useSelector(store=>store.AuthReducer.loginUser.id);
-  const logId = 1;
+  const isAuth=useSelector(store=>store.AuthReducer.isAuth)
+ 
 
-
-
-  //const orderArr = [];
-  // const orderLs = localStorage.getItem("cartData");
-  // let orderArr=[]
-  // if (orderLs == null) {
-
-  //   orderArr = [];
-
-  // } else {
-  //   orderArr = JSON.parse(orderLs);
-  // }
-
-  //  const orders=useSelector((store)=>{return store.AuthReducer.loginUser.Order})
-
-  //      if(orders){
-  //       const arr=orders.map((e,i)=>{e.quantity=1
-  //         return e
-  //       })
-  //       setCartArr(arr)
-  //      }
+  
 
   const handleInc = (id) => {
 
-    //locallychecking and updating
     const arr = cartArr.map((e, i) => {
       if (e.id == id) {
         e.quantity++;
@@ -53,16 +32,6 @@ export const CartPage = () => {
       return e;
     });
     setCartArr(arr);
-
-    //updating API
-   // axios.patch(`https://grocryapi.onrender.com/Users/1`,{
-    axios.patch(`https://grocryapi.onrender.com/LoggedIn/${logId}`,{
-      Order:[...arr]
-     })
-     .then((res)=>{console.log(res)})
-
-     //updating Store{AuthReducer.login.Order}
-    // dispatch(upDateOrder(arr))
   };
 
      const handleDec=(id)=>{
@@ -76,17 +45,7 @@ export const CartPage = () => {
         return e;
       });
       setCartArr(arr);
-
-      // setLoading(true)
-
-      //axios.patch(`https://grocryapi.onrender.com/Users/1`,{
-      axios.patch(`https://grocryapi.onrender.com/LoggedIn/${logId}`,{
-      Order:[...arr]
-     })
-     .then((res)=>{console.log(res)})
-    //  setLoading(false)
-     //dispatch(upDateOrder(arr))
-     }
+    }
 
 
 
@@ -96,34 +55,21 @@ export const CartPage = () => {
 
     setCartArr(arr);
 
-    //axios.patch(`https://grocryapi.onrender.com/Users/1`,{
-    axios.patch(`https://grocryapi.onrender.com/LoggedIn/${logId}`,{
-      Order:[...arr]
-     })
-     .then((res)=>{console.log(res)})
-
-     //dispatch(upDateOrder(arr))
-
    }
 
 
 
-  useEffect(() => {
-    //make id dynamic with params()
-  
-   // axios.get("https://grocryapi.onrender.com/Users/1").then((res) => {
+  useEffect(() => { 
+   const token = sessionStorage.getItem('token');
     setLoading(true)
-    axios.get(`https://grocryapi.onrender.com/LoggedIn/${logId}`).then((res) => {
-      console.log(res.data.Order, "resOrder cartPage");
-      const arr = res.data.Order.map((e, i) => {
-        if(e.quantity==undefined){
-          e.quantity = 1;
-          e.total = e.price;
-        }
-        return e;
-      });
-
-      console.log(arr, "arr");
+    axios.get(process.env.REACT_APP_API_backendUrl + `users/cart`,
+    {
+      headers:{
+        authorization: `bearer ${token}`
+      }
+    }
+    ).then((res) => {
+      const arr = res.data;
       setCartArr(arr);
       setLoading(false)
     });
@@ -148,7 +94,10 @@ export const CartPage = () => {
     return <Loader/>
   }
 
-
+  if(isAuth===false){
+    return navigate("/login");
+  }
+  
   return (
 
     <DIV className="container">

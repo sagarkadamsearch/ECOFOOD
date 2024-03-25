@@ -2,12 +2,21 @@ import { DarkMode, GET_ADMIN_PRODUCT, TotalData, getProductFail, getProductReque
 import axios from "axios"
 
 export const getProducts = (paramsObj,page) => (dispatch)=>{
+ 
     dispatch({type:getProductRequest});
-    axios.get(`https://grocryapi.onrender.com/products?_page=${page}&_limit=6`,paramsObj).then((res)=>{
+    const token = sessionStorage.getItem('token');
+
+    axios.get(process.env.REACT_APP_API_backendUrl + `products?page=${page}&limit=6`,
+    paramsObj
+    )
+    .then((res)=>{
+       console.log("Hello sagar",res.data);
         dispatch({type:getProductSuccess,payload:res.data})
-    }).catch((err)=>{
+    })
+    .catch((err)=>{
         dispatch({type:getProductFail})
     })
+
 }
 
 export const handleDarkMode = (dispatch)=>{

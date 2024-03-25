@@ -8,6 +8,7 @@ import ButtonComponent from "../Button";
 import Swal from "sweetalert2";
 import AOS from "aos"
 import 'aos/dist/aos.css'
+import { isValidEmail } from "../../Functions/isValidEmail";
 
 export const SignUp=()=>{
     const[email,setEmail]=useState("");
@@ -20,50 +21,66 @@ export const SignUp=()=>{
         console.log("store sig", store.AuthReducer);
         return store.AuthReducer.Users;
       });
-    // const getData=()=>{
-    //     console.log("step1")
-    //   axios.get("https://grocryapi.onrender.com/Users")
-    //   .then((res)=>{console.log(res.data)})
-    // }
-    const handleSubmit=()=>{
+   
+    const handleSubmit= async()=>{
+
+      if(!email || !password || !firstName || !lastName){
+        alert("Please fill all fields!");
+     }
+
+     if(!isValidEmail(email)){
+        alert("Please enter a valid email address!");
+     }
+
         const userData={
-            name:firstName+" "+lastName,
+            name:firstName,
+            surname:lastName,
             email:email,
             password:password,
-            Order:[]
          }
+           try {
+            const Data = await axios.post(process.env.REACT_APP_API_backendUrl+"users/create",userData);
+             
+            if(Data?.data.Msg.includes('successfully')){
+              Swal.fire({
+                title: 'SignUp Successfully',
+                text: 'You are Logged in Successfully!',
+                icon: 'success', // Set the icon to 'success'
+                confirmButtonColor: '#DC3545'
+              });
+ 
+               setEmail('');
+               setFirstName('');
+               setLastName('');
+               setPassword('');
 
-         const checkEm = Users.filter((e, i) => {
-            return e.email === userData.email;
-          });
+                // dispatch(signUp(userData))
+                // navigate("/login")
+             }
+             else{
+              Swal.fire({
+                title: 'Email Already Registered',
+                text: 'Enter DIfferent Email',
+                icon: 'error',
+                confirmButtonColor: '#DC3545'
+              })
+             }
 
-          if (checkEm.length == 0) {
-            // alert("signin success")
-
-            Swal.fire({
-              title: 'SignUp Successfully',
-              text: 'You are Logged in Successfully!',
-              icon: 'success', // Set the icon to 'success'
-              confirmButtonColor: '#DC3545'
-            });
-              dispatch(signUp(userData))
-              navigate("/login")
+           } catch (error) {
+             console.log({"Error":error});
+           } 
+            
+      
+   
+          
           }
-          else{
-          //  alert("email already present")
-          Swal.fire({
-            title: 'Email Already Registered',
-            text: 'Enter DIfferent Email',
-            icon: 'error',
-            confirmButtonColor: '#DC3545'
-          })
-          }
-    }
+    
     
     useEffect(()=>{
-      dispatch(getUsers);
+    
       AOS.init({duration:2000})
-    },[])
+    },[]);
+
     return(
         <DIV>
           <div className="container" >

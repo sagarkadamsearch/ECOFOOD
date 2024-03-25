@@ -3,7 +3,7 @@ import ButtonComponent from "./Button";
 import styled from "@emotion/styled";
 import { useDispatch, useSelector } from "react-redux";
 import { handleDarkMode } from "../Redux/ProductReducer/action";
-import { logout } from "../Redux/AuthReducer/action";
+import { login, logout } from "../Redux/AuthReducer/action";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -39,30 +39,7 @@ export default function Navbar() {
   };
 
   const handleLogout = () => {
-    console.log(order, "nav order");
-    console.log(logEmail, "logEmail");
-
-    const userData = users.filter((e, i) => {
-      return e.email == logEmail;
-    });
-    console.log(userData, "userDate");
-
-    //update user api with new order details at the time of user log out
-    axios
-      .patch(`https://grocryapi.onrender.com/Users/${userData[0].id}`, {
-        Order: [...order],
-      })
-      .then((res) => {
-        console.log(res);
-      });
-
-    //update loggedIn api with delete action and making it empty
-    axios
-      .delete(`https://grocryapi.onrender.com/LoggedIn/${logId}`)
-      .then((res) => {
-        console.log(res);
-      });
-
+   
     dispatch(logout);
 
     Swal.fire({
@@ -78,11 +55,11 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    axios.get("https://grocryapi.onrender.com/Users").then((res) => {
-      console.log(res.data);
-      setUsers(res.data);
-    });
-  }, [isAuth]);
+     const isHaveToken = sessionStorage.getItem('token');
+     if(isHaveToken && isHaveToken!=""){
+         dispatch(login());
+     }
+  }, []);
 
   return (
     <>

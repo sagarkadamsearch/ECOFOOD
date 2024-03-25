@@ -10,6 +10,7 @@ import ButtonComponent from "../Button";
 import Swal from 'sweetalert2';
 import AOS from "aos"
 import 'aos/dist/aos.css'
+import { isValidEmail } from "../../Functions/isValidEmail";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -18,28 +19,27 @@ export const Login = () => {
   const navigate = useNavigate()
 
   const Users = useSelector((store) => {
-    console.log("store", store.AuthReducer);
     return store.AuthReducer.Users;
   });
+
   const isAuth = useSelector((store) => {
     return store.AuthReducer.isAuth;
   });
 
-  // const getData=()=>{
-  //     console.log("step1")
-  //   axios.get("https://grocryapi.onrender.com/Users")
-  //   .then((res)=>{console.log(res.data)})
-  // }
-  //  axios.post("https://grocryapi.onrender.com/Users",userData)
-  //  .then((res)=>{console.log(res,"1")})
-  //  .catch((err)=>{console.log(err,"2")})
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     const Data = {
       email: email,
       password: password,
     };
-    console.log(Data, "Data");
+
+     if(!email || !password){
+        alert("Please fill all fields!");
+     }
+
+     if(!isValidEmail(email)){
+        alert("Please enter a valid email address!");
+     }
 
     if(email == "admin@gmail.com"){
       Swal.fire({
@@ -49,48 +49,35 @@ export const Login = () => {
         confirmButtonColor: '#DC3545'
       });
       dispatch(AdminLoginFunction)
-    }else{
-    const emData = Users.filter((e, i) => {
-      return e.email == Data.email;
-    });
+    }
 
-    // console.log(emData, "emData");
-    if (emData.length != 0) {
-      if (emData[0].password === Data.password) {
-        console.log("successful login ");
-        
+    const userVerified = await axios.post(process.env.REACT_APP_API_backendUrl+'users/login',Data)
+     
+     if(userVerified?.data.token){
         Swal.fire({
           title: 'Login Successful',
           text: 'You are Logged in Successfully!',
           icon: 'success', // Set the icon to 'success'
           confirmButtonColor: '#DC3545'
         });
-        // alert("login Success");
-        dispatch(login(emData[0]));
-        navigate(-1)
-      } else {
-        console.log("wrond password");
+        
+        sessionStorage.setItem('token',userVerified.data.token);
+        dispatch(login());
+        navigate('/')
+
+     }
+     else{
         Swal.fire({
-          title: 'Wrong Password',
+          title: 'Wrong Credential!',
           text: 'Enter Correct Credential',
           icon: 'error',
           confirmButtonColor: '#DC3545'
         })
-      }
-    } else {
-      console.log("email not found");
-      Swal.fire({
-        title: 'Email not Found',
-        text: 'Enter Correct Credential',
-        icon: 'error',
-        confirmButtonColor: '#DC3545'
-      })
-    }
+      
+     }
   };
-}
-  // const handleLogout = () => {
-  //   dispatch(logout);
-  // };
+
+ 
 
   useEffect(() => {
     dispatch(getUsers);
@@ -102,20 +89,11 @@ export const Login = () => {
   return (
     <>
       <DIV className="my-5" >
-        {/* <div className="logout">
-          <h1>logout</h1>
-          <ButtonComponent onClick={handleLogout} name={"logout"} />
-        </div> */}
-
-
         <div className="login container">
           <div className="row">
             <div className="col-md-7 d-none d-lg-grid">
               <img className="w-100" src="https://img.freepik.com/premium-vector/set-fastfood-items-vector-illustration_920128-50.jpg?w=2000" alt="" />
             </div>
-
-
-
 
             <div className="col-md-5" data-aos="fade-right">
 
@@ -161,17 +139,7 @@ export const Login = () => {
           </div>
             </div>
           </div>
-          {/* <h1>Login</h1> */}
-
-          {/* {isAuth ? (
-            <Alert severity="success">login successful</Alert>
-          ) : (
-            <Alert severity="info">login for better experince</Alert>
-          )} */}
-
-
-
- 
+  
         </div>
       </DIV>
     </>

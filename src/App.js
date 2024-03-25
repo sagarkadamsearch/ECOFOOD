@@ -4,7 +4,7 @@ import './App.css';
 import BasicAccordion from './Component/Accordian';
 import Footer from './Component/Footer';
 import Navbar from './Component/Navbar';
-import SingleCardPage from './Component/Sagar/SingleCardPage';
+import SingleCardPage from './Component/S/SingleCardPage';
 import AllRoutes from './Routes/AllRoutes';
 import MainRoutes from './Routes/MainRoutes';
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { CartPage } from '../Component/Hemanth/CartPage'
+import { CartPage } from '../Component/H/CartPage'
 
 export default function Order() {
 

@@ -3,13 +3,13 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import About from "./About";
 import Order from "./Order";
-import { Login } from "../Component/Hemanth/Login";
+import { Login } from "../Component/H/Login";
 import PrivateRoutes from "./PrivateRoutes";
-import SingleCardPage from "../Component/Sagar/SingleCardPage";
-import { SignUp } from "../Component/Hemanth/Signup";
+import SingleCardPage from "../Component/S/SingleCardPage";
+import { SignUp } from "../Component/H/Signup";
 import ProductList from "../Component/ProductList";
-import { CartPage } from "../Component/Hemanth/CartPage";
-import Payment from "../Component/Sagar/Payment/Payment";
+import { CartPage } from "../Component/H/CartPage";
+import Payment from "../Component/S/Payment/Payment";
 // import {AdminProductManage} from "../Component/Hemanth/AdminProductManage";
 // import {AdminAddProduct} from "../Component/Hemanth/AdminAddProduct";
 // import {AdminEditProduct} from "../Component/Hemanth/AdminEditProduct"
@@ -25,9 +25,7 @@ export default function AllRoutes() {
         <Route
           path="/order"
           element={
-            <PrivateRoutes>
               <Order />
-            </PrivateRoutes>
           }
         />
         <Route path="/login" element={<Login />} />

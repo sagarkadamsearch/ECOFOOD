@@ -12,17 +12,7 @@ const SingleCardPage = () => {
     const {id} =  useParams();
 
     useEffect(()=>{
-        axios.get("https://grocryapi.onrender.com/products")
-        .then((res)=>{
-            setData(res.data);
-        });
- 
-        axios.get(`https://grocryapi.onrender.com/products/${id}`)
-        .then((res)=>{
-            let cat = res.data.category;
-            setCategory(cat);
-        })
-
+       
      },[]) 
 
 
@@ -30,7 +20,7 @@ const SingleCardPage = () => {
         <div className="">
             <Header/>
             <BenefitVideo/>
-            <SimilarProduct category={category} data={data}/>
+            {/* <SimilarProduct category={category} data={data}/> */}
             {/* <OtherProduct category={category} data={data}/> */}
         </div>
     );
