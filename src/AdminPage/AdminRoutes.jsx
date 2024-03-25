@@ -7,9 +7,9 @@ import Analytics from './pages/Analytics'
 import AdminProductList from './pages/AdminProductList'
 import AdminProducts from './pages/AdminProducts'
 import Sales from './pages/Sales'
-import { AdminProductManage } from '../Component/Hemanth/AdminProductManage'
-import { AdminAddProduct } from '../Component/Hemanth/AdminAddProduct'
-import { AdminEditProduct } from '../Component/Hemanth/AdminEditProduct'
+import { AdminProductManage } from '../Component/H/AdminProductManage'
+import { AdminAddProduct } from '../Component/H/AdminAddProduct'
+import { AdminEditProduct } from '../Component/H/AdminEditProduct'
 import { AdminAbout } from './pages/AdminAbout'
 
 export default function AdminRoutes() {

@@ -1,6 +1,6 @@
 import React from 'react'
-import { AdminEditProduct } from '../../Component/Hemanth/AdminEditProduct'
-import { AdminAddProduct } from '../../Component/Hemanth/AdminAddProduct'
+import { AdminEditProduct } from '../../Component/H/AdminEditProduct'
+import { AdminAddProduct } from '../../Component/H/AdminAddProduct'
 
 export default function AdminProducts() {
   return (
