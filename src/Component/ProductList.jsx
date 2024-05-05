@@ -103,9 +103,6 @@ return <Loader/>
             ))}
             <button disabled={page==Total} className='pageBtn rounded px-2 d-none d-lg-grid' onClick={handleNext}>Next</button>
           </div>
-
-
-
     </div>
   </div>
     </div>

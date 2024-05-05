@@ -14,7 +14,6 @@ export default function Filter() {
         <DishesCard  name={"Fruits"} value="Fruits"  />
         <DishesCard  name={"Vegetables"} value="Vegetables"  />
         <DishesCard  name={"Seafood"} value="Seafood" />
-        <DishesCard  name={"Fish"} value="Fish" />
         <DishesCard  name={"Mutton"} value="Mutton" />
         <DishesCard  name={"Chicken"} value="" />
     </div>

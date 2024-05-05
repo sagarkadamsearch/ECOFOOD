@@ -24,7 +24,6 @@ export const Sidebar = () => {
       newCategory.push(value)
     }
     setCategory(newCategory)
-
   }
 
   useEffect(()=>{
@@ -98,14 +97,6 @@ export const Sidebar = () => {
           onChange={handleCategory}
         />
         <label>Mutton</label>
-        <br />
-        <input className ="form-check-input bg me-2"
-          type="checkbox"
-          value={"Fish"}
-          checked={category.includes("Fish")}
-          onChange={handleCategory}
-        />
-        <label>Fish</label>
         <br />
       </div>
       <br />
