@@ -11,10 +11,13 @@ import Swal from 'sweetalert2';
 import AOS from "aos"
 import 'aos/dist/aos.css'
 import { isValidEmail } from "../../Functions/isValidEmail";
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'; 
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isEyeOpen,setIsEyeOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
@@ -116,15 +119,24 @@ export const Login = () => {
 
           <label className="fs-4" htmlFor="">Password</label>
           <br />
+          <div style={{position:"relative",display:"flex",alignItems:'center'}}>
           <input
           className="px-2 fs-5"
-            type="text"
+            type={isEyeOpen?"text":"password"}
             value={password}
             placeholder="Password"
             onChange={(e) => {
               setPassword(e.target.value);
             }}
           />
+          <span style={{position:"absolute",right:"60px",cursor:"pointer"}}>
+            {isEyeOpen ?
+             <VisibilityIcon onClick={()=>setIsEyeOpen(!isEyeOpen)}/> :
+             <VisibilityOffIcon onClick={()=>setIsEyeOpen(!isEyeOpen)} />
+            }
+            </span>
+          
+          </div>
           <br />
           {/* <button onClick={handleSubmit}>submit</button> */}
 

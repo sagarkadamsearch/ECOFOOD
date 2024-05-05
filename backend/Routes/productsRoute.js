@@ -8,14 +8,15 @@ productRoute.get('/',async(req,res)=>{
     const query = {};
     const {page,limit,category,order} = req.query;
     
-    order = (order === 'asc') ? 1 : ((order === 'dsc') ? -1 : 1);
+    let orderResult = (order === 'asc') ? 1 : ((order === 'desc') ? -1 : 1);
 
     if(req.query.category){
         query.category = {$in:category}
     }   
-  
+  console.log('order',order);
     try {
-        const products = await productModel.find(query).skip((page-1)*limit).limit(limit).sort({price:order});
+        const products = await productModel.find(query).skip((page-1)*limit).limit(limit).sort({price:orderResult});
+        // console.log('products',products);
         if(!products){
           return  res.json({"Msg":"Unable to find using collection name products"});
         }

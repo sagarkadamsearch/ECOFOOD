@@ -9,12 +9,15 @@ import Swal from "sweetalert2";
 import AOS from "aos"
 import 'aos/dist/aos.css'
 import { isValidEmail } from "../../Functions/isValidEmail";
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'; 
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 export const SignUp=()=>{
     const[email,setEmail]=useState("");
     const [firstName,setFirstName]=useState("");
     const [lastName,setLastName] = useState("")
     const[password,setPassword]=useState("");
+    const [isEyeOpen,setIsEyeOpen] = useState(false);
     const dispatch=useDispatch();
     const navigate = useNavigate()
     const Users = useSelector((store) => {
@@ -102,7 +105,21 @@ export const SignUp=()=>{
             <label htmlFor="">Email</label>
             <input type="text" value={email} className="px-2 fs-5" placeholder="Email"  onChange={(e)=>{setEmail(e.target.value)}}/>
             <label htmlFor="">Password</label>
-            <input type="text" value={password} className="px-2 fs-5" placeholder="Password"  onChange={(e)=>{setPassword(e.target.value)}}/>
+            <div style={{position:"relative",display:"flex",alignItems:'center'}}>
+              <input 
+               type={isEyeOpen?"text":"password"}
+               value={password}
+               className="px-2 fs-5"
+               placeholder="Password"
+               onChange={(e)=>{setPassword(e.target.value)}}
+               />
+              <span style={{position:"absolute",right:"60px",cursor:"pointer"}}>
+              {isEyeOpen ?
+               <VisibilityIcon onClick={()=>setIsEyeOpen(!isEyeOpen)}/> :
+               <VisibilityOffIcon onClick={()=>setIsEyeOpen(!isEyeOpen)} />
+              }
+            </span>
+            </div>  
             <span className="d-flex justify-content-between mt-2">
 
             <ButtonComponent onClick={handleSubmit} name={"submit"} />

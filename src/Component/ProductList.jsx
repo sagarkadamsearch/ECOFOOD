@@ -44,8 +44,8 @@ export default function ProductList() {
   const paramsObj = {
     params:{
       category: searchParams.getAll("category"),
-      _order:searchParams.get("order"),
-      _sort:searchParams.get("order")?"price":null
+      order:searchParams.get("order"),
+      sort:searchParams.get("order")?"price":null
     }
   }
 
