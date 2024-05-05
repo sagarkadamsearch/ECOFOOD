@@ -19,7 +19,6 @@ function ProductInfo({title,about,rating,price}) {
     const order = useSelector(store=>store.AuthReducer.loginUser.Order);
     const dispatch=useDispatch();
     const [maniData,setMainData] = useState({});
-    console.log(order,"orderin")
     
    
    const statarr = new Array(5).fill(0).map((e)=> <BsStarFill key={Math.random()} style={{color:"Orange"}}/>) 
@@ -64,7 +63,6 @@ function ProductInfo({title,about,rating,price}) {
    useEffect(()=>{
      axios.get(process.env.REACT_APP_API_backendUrl + `products/${id}`)
      .then((res)=>{
-       console.log("Hello sagar",res) 
        setMainData(res.data);
      })
      .catch((err)=>{

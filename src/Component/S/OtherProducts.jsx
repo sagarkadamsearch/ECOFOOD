@@ -10,9 +10,6 @@ import 'aos/dist/aos.css'
 
 export default function OtherProducts({data,category}) {  
  
-  // const [name,setName] = useState("Laptop");
-
-
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -24,22 +21,6 @@ export default function OtherProducts({data,category}) {
   
   let similarData = category!=""&&data.length>0 ?data.filter((product)=> product.category!=category):[];
 
-
-//  useEffect(()=>{
-//     window.addEventListener("resize",()=>{
-//         let width = window.outerWidth;
-  
-//          if(width>=320 && width<=480){
-//           setName("Mobile");
-//          }
-//          else if(width>=481 && width<=768){
-//            setName("TAB");
-//          }
-//          else if(width>=769 && width<=1300){
-//           setName("Laptop");
-//       }
-//    })
-//  },[]) ;
 useEffect(()=>{
   AOS.init({duration:2000})
   },[])

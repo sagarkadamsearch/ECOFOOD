@@ -28,11 +28,6 @@ const Analytics = () => {
   const Seafood = category.filter((e)=> e.category==="Seafood");
   const Mutton = category.filter((e)=> e.category==="Mutton");
 
-  console.log(Vegetables)
-
-  // ["Fruits","Vegetables","Chicken","Seafood","Mutton"];
-  // [100,150,160,120,300];
-
   const name = ["Fruits","Vegetables","Chicken","Seafood","Mutton"];
   const Length = [Fruits.length,Vegetables.length,Chicken.length,Seafood.length,Mutton.length];
   const colors = ["#FC6183", "green", "#FBCA57", "#369BE0","#0996a0"];

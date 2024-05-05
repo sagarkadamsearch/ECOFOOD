@@ -21,7 +21,6 @@ export const SignUp=()=>{
     const dispatch=useDispatch();
     const navigate = useNavigate()
     const Users = useSelector((store) => {
-        console.log("store sig", store.AuthReducer);
         return store.AuthReducer.Users;
       });
    
@@ -56,9 +55,6 @@ export const SignUp=()=>{
                setFirstName('');
                setLastName('');
                setPassword('');
-
-                // dispatch(signUp(userData))
-                // navigate("/login")
              }
              else{
               Swal.fire({

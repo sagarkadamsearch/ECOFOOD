@@ -9,29 +9,9 @@ import AOS from "aos"
 import 'aos/dist/aos.css'
 
 export default function SimilarProduct({data,category}) {  
- 
-
-  // const [name,setName] = useState("Laptop");
-
-  
+   
   let similarData = category!=""&&data.length>0 ?data.filter((product)=> product.category==category):[];
 
-
-//  useEffect(()=>{
-//     window.addEventListener("resize",()=>{
-//         let width = window.outerWidth;
-  
-//          if(width>=320 && width<=480){
-//           setName("Mobile");
-//          }
-//          else if(width>=481 && width<=768){
-//            setName("TAB");
-//          }
-//          else if(width>=769 && width<=1300){
-//           setName("Laptop");
-//       }
-//    })
-//  },[]) ;
 useEffect(()=>{
   AOS.init({duration:2000})
   },[])

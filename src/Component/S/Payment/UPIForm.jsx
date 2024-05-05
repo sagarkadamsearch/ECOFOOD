@@ -57,7 +57,6 @@ const checkFunction= ()=>{
 useEffect(()=>{
    setUpi("");
    setIsSuccsess(false);
-   console.log("rin");
 },[paymentMode])
 
   return (

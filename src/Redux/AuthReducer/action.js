@@ -8,7 +8,6 @@ export const signUp = (userData) => (dispatch) => {
     return axios
       .post("https://grocryapi.onrender.com/Users", userData)
       .then((res) => {
-        // console.log("post signup",res.data)
         dispatch({ type:SignUpSuccess , payload: res.data});
       })
       .catch((err) => {
@@ -21,7 +20,6 @@ export const signUp = (userData) => (dispatch) => {
     return axios
       .get("https://grocryapi.onrender.com/Users")
       .then((res) => {
-        // console.log(res.data,"getData")
         dispatch({ type:GetUsersData , payload: res.data});
       })
       .catch((err) => {
@@ -40,7 +38,6 @@ export const signUp = (userData) => (dispatch) => {
     axios
     .get(`https://grocryapi.onrender.com/LoggedIn/${id}`)
     .then((res) => {
-      console.log("login onload",res.data)
       dispatch({ type:LoginUpdate , payload: res.data});
     })
     .catch((err) => {
@@ -52,7 +49,6 @@ export const signUp = (userData) => (dispatch) => {
     axios
     .get("https://grocryapi.onrender.com/Products")
     .then((res) => {
-      console.log("products onload",res.data)
       dispatch({ type:getProductRequest , payload: res.data});
     })
     .catch((err) => {
@@ -69,7 +65,6 @@ export const signUp = (userData) => (dispatch) => {
   }
 
   export const upDateOrder=(data)=>(dispatch)=>{
-    console.log("update data")
     dispatch({type:upDateOrder,payload:data})
   }
 

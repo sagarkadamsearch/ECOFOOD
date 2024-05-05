@@ -90,10 +90,8 @@ export const AdminAbout=()=>{
           orders: 11
         }
       ];
-     // console.log(users);
       const handleDelete=(id)=>{
          const newarr=data.filter((e,i)=>{return e.id!=id})
-         console.log(newarr)
          setUsers(newarr)
       }
       useEffect(()=>{

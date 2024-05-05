@@ -10,9 +10,7 @@ import { SignUp } from "../Component/H/Signup";
 import ProductList from "../Component/ProductList";
 import { CartPage } from "../Component/H/CartPage";
 import Payment from "../Component/S/Payment/Payment";
-// import {AdminProductManage} from "../Component/Hemanth/AdminProductManage";
-// import {AdminAddProduct} from "../Component/Hemanth/AdminAddProduct";
-// import {AdminEditProduct} from "../Component/Hemanth/AdminEditProduct"
+
 
 export default function AllRoutes() {
   return (
@@ -40,10 +38,6 @@ export default function AllRoutes() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/singlePage/:id" element={<SingleCardPage />} />
-{/* 
-        <Route path="/adminList" element={<AdminProductManage />} />
-        <Route path="/addNewProduct" element={<AdminAddProduct />} />
-        <Route path="/edit/:id" element={<AdminEditProduct/>} /> */}
       </Routes>
     </div>
   );

@@ -11,8 +11,6 @@ try {
 
    let decode =  jwt.verify(token,"demo");
    req.body.userId = decode.userId;
-
-   console.log(req.body);
    next();
 
 } catch (error) {

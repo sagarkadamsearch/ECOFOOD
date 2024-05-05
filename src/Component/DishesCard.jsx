@@ -7,8 +7,6 @@ export default function DishesCard({name}) {
 
     const [searchParams,setSearchParams] = useSearchParams();
     const [category,setCategory] = useState(searchParams.getAll("category") || [])
-    // console.log(searchParams)
-
 
     const handleCategory = ()=>{
         const value={name}.name;
@@ -27,7 +25,6 @@ export default function DishesCard({name}) {
         let params={
           category,
         }
-        // order && (params.order=order);
         setSearchParams(params)
       },[category])
     

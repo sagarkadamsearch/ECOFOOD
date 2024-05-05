@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {useDispatch, useSelector} from "react-redux"
-import { getProducts,getCount } from '../Redux/ProductReducer/action';
+import { getProducts,getCount, getTotalFilteredProductCount } from '../Redux/ProductReducer/action';
 import ProductCard from './ProductCard';
 import { useSearchParams } from "react-router-dom";
 import styled from '@emotion/styled';
@@ -19,10 +19,11 @@ export default function ProductList() {
 
   const data = useSelector(store=>store.ProductsReducer.products);
 
-  const length = useSelector(store=>store.ProductsReducer.length);
+  const TotalFilterProductsLength = useSelector(store=>store.ProductsReducer.TotalFilterProductsLength);
 
-  const Total = Math.ceil(length/6)
-  
+  const Total = Math.ceil((TotalFilterProductsLength || 0) /6)
+
+
   const paginationArray = new Array(Total).fill(0)
 
 
@@ -50,7 +51,6 @@ export default function ProductList() {
   }
 
   const loading = useSelector(store=>store.ProductsReducer.isLoading);
-  console.log(loading)
 
   useEffect(()=>{
     window.scrollTo(0, 0);
@@ -58,9 +58,7 @@ export default function ProductList() {
   
   useEffect(()=>{
     dispatch(getProducts(paramsObj,page));
-    dispatch(getCount);
-    
-
+    dispatch(getTotalFilteredProductCount(paramsObj,page));
   },[searchParams,page]);
 
   useEffect(()=>{

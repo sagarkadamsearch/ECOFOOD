@@ -37,10 +37,3 @@ export default function Fruits() {
     </div>
   )
 }
-
-
-// const DIV = styled.div`
-//   @media screen {
-    
-//   }
-// `

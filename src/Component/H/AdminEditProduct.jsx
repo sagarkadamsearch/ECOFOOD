@@ -13,7 +13,6 @@ export const AdminEditProduct=()=>{
     const navigate=useNavigate()
      const dispatch=useDispatch()
      const products = useSelector((store) => store.ProductsReducer.adminProducts);
-     console.log(products)
      const[price,setPrice]=useState(0);
      const[name,setName]=useState("");
      const[image,setImage]=useState("");
@@ -42,7 +41,6 @@ export const AdminEditProduct=()=>{
         setCategory(arr[0].category)
         setImage(arr[0].image)
         setAbout(arr[0].about)
-     // console.log(price,title,"price title")
      AOS.init({duration:2000})
      },[])
 

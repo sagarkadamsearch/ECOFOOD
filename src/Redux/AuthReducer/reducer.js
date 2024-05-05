@@ -10,7 +10,6 @@ const initialState = {
 }
 
 export const reducer = (state=initialState,{type,payload})=>{
-    console.log(type,"reducer")
     switch(type){
         case SignUpRequest:{
             return{

@@ -1,4 +1,4 @@
-import { DarkMode, GET_ADMIN_PRODUCT, TotalData, getProductFail, getProductRequest, getProductSuccess, getTotalProduct, getUsers } from "./actionTypes"
+import { DarkMode, GET_ADMIN_PRODUCT, TotalData, getProductFail, getProductRequest, getProductSuccess, getTotalProduct, getTotalProductsFiltered, getUsers } from "./actionTypes"
 import axios from "axios"
 
 export const getProducts = (paramsObj,page) => (dispatch)=>{
@@ -10,13 +10,25 @@ export const getProducts = (paramsObj,page) => (dispatch)=>{
     paramsObj
     )
     .then((res)=>{
-       console.log("Hello sagar",res.data);
         dispatch({type:getProductSuccess,payload:res.data})
     })
     .catch((err)=>{
         dispatch({type:getProductFail})
     })
+}
 
+export const getTotalFilteredProductCount = (paramsObj) => (dispatch) =>{
+  const token = sessionStorage.getItem('token');
+
+  axios.get(process.env.REACT_APP_API_backendUrl + `products/filter/count`,
+  paramsObj
+  )
+  .then((res)=>{
+      dispatch({type:getTotalProductsFiltered,payload:res.data.count})
+  })
+  .catch((err)=>{
+      dispatch({type:getProductFail})
+  })
 }
 
 export const handleDarkMode = (dispatch)=>{
@@ -55,11 +67,9 @@ export const handleDarkMode = (dispatch)=>{
 //   
 
   export const getAdminProducts = (paramsObj) => (dispatch) => {
-    console.log("step1 admin")
     axios
       .get("https://grocryapi.onrender.com/products", paramsObj)
       .then((res) => {
-        console.log(res.data,"getAdminproducts data ")
         dispatch({ type: GET_ADMIN_PRODUCT, payload: res.data });
       })
       .catch((err) => {
@@ -69,11 +79,10 @@ export const handleDarkMode = (dispatch)=>{
 
 
   export const deleteAdminProducts = (id) => (dispatch) => {
-    console.log("step1 admin")
     axios
       .delete(`https://grocryapi.onrender.com/products/${id}`)
       .then((res) => {
-        console.log(res.data,"deleteAdminproducts data ")
+
       })
       .catch((err) => {
         console.log(err,"admin product action.js products")
@@ -85,7 +94,7 @@ export const handleDarkMode = (dispatch)=>{
     return  axios
        .patch(`https://grocryapi.onrender.com/products/${id}`, data)
        .then((res) => {
-       console.log("succes edit")
+
        })
        .catch((err) => {
        });
@@ -97,7 +106,7 @@ export const handleDarkMode = (dispatch)=>{
     return axios
           .post("https://grocryapi.onrender.com/products", productData)
           .then((res) => {
-            console.log("successful add product")
+
           })
           .catch((err) => {
           });

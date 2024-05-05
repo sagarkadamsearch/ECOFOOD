@@ -56,8 +56,6 @@ const Dashboard = () => {
                 label: "Price",
                 data: polar.map((e)=>e.sales),
                 backgroundColor: colors,
-                // borderColor: "#DC3545",
-                // borderWidth: 2,
               },
             ],
           });

@@ -24,7 +24,6 @@ export const AdminProductSearch = () => {
       newCate.push(value);
     }
     setCate(newCate);
-    console.log(newCate,"cate")
   };
   const handleOrder = (e) => {
     const { value } = e.target;
@@ -37,7 +36,6 @@ export const AdminProductSearch = () => {
       category
     };
     order && (params.order = order);
-   // cate &&(params.cate = cate)
     setSearchParams(params);
   }, [ order,category]);
 

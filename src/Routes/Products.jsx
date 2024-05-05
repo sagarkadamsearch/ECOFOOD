@@ -12,19 +12,9 @@ import Loader from '../Component/Loader'
 export default function Products() {
 
   const loading = useSelector(store=>store.ProductsReducer.isLoading);
-  console.log(loading)
-
-//   if(loading){
-// return <h1>Loading</h1>
-//   }
-  
-
-
-
 
 return (
     <div className='container my-5'>
-        {/* <h2 className='text-center m-5'>Products Page</h2> */}
         <Filter/>
         <div className='d-flex'>
       <div className='sidebar'>
@@ -34,7 +24,6 @@ return (
         <ProductList/>
       </div>
         </div>
-
     </div>
   )
 }

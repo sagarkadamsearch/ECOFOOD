@@ -32,7 +32,6 @@ export const AdminAddProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(data);
     
     dispatch(addAdminProduct(data)).then((res)=>{
         navigate("/AdminProductList")
@@ -49,7 +48,6 @@ export const AdminAddProduct = () => {
     
   };
 
-  console.log("data", data);
   useEffect(()=>{
     AOS.init({duration:2000})
     },[])

@@ -5,7 +5,6 @@ import { AdminLoginFunction, getUsers, login, logout } from "../../Redux/AuthRed
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginSuccess } from "../../Redux/AuthReducer/actionTypes";
-// import { Alert } from "@mui/material";
 import ButtonComponent from "../Button";
 import Swal from 'sweetalert2';
 import AOS from "aos"

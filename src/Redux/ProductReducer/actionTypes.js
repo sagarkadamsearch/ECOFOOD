@@ -2,6 +2,7 @@
 export const getProductRequest = "ProductRequest";
 export const getProductSuccess = "ProductSuccess";
 export const getProductFail = "ProductFail";
+export const getTotalProductsFiltered = 'getTotalProductsFiltered';
 
 
 export const PostProductRequest = "ProductRequest";
@@ -14,7 +15,6 @@ export const TotalData ="TotalData";
 
 export const getUsers =  "getUsers";
 export const getTotalProduct = "getTotalProduct";
-
 
 
 export const GET_ADMIN_PRODUCT="GET_ADMIN_PRODUCT"

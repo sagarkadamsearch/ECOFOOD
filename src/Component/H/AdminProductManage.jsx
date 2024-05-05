@@ -50,14 +50,6 @@ export const AdminProductManage=()=>{
     useEffect(() => {
               dispatch(getAdminProducts(paramsObj))
     }, [searchParams]);
-    
-    // useEffect(()=>{
-    //     if(search===""){
-    //     }else{
-
-    //     }
-
-    // },[search])
 
     useEffect(()=>{
       AOS.init({duration:2000})

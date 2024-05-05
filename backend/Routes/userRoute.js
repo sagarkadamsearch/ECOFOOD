@@ -41,7 +41,6 @@ UserRoute.post('/login',async(req,res)=>{
 
         bcrypt.compare(password,user.password,(err,result)=>{
           if(!result){
-            console.log("Helo");
             return res.json({"Msg":"Please enter a valid creditionals!"});
           }
           else{

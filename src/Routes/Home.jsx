@@ -6,8 +6,6 @@ import Services from '../Component/services'
 import TestimonalSlider from '../Component/S/Testimonal/TestimonalSlider'
 
 export default function Home() {
-  // const data = useSelector(store=>store);
-  // console.log(data)
   return (
     <div>
       <HeroSection/>
